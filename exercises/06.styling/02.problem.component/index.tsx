@@ -10,43 +10,40 @@ import { createRoot } from 'react-dom/client'
 // and apply those to the rendered div as well.
 
 // 🐨 update all of these to use the <Box> component with the appropriate props.
-const smallBox = (
-	<div
-		className="box box--small"
-		style={{ fontStyle: 'italic', backgroundColor: 'lightblue' }}
-	>
-		small lightblue box
-	</div>
-)
-const mediumBox = (
-	<div
-		className="box box--medium"
-		style={{ fontStyle: 'italic', backgroundColor: 'pink' }}
-	>
-		medium pink box
-	</div>
-)
-const largeBox = (
-	<div
-		className="box box--large"
-		style={{ fontStyle: 'italic', backgroundColor: 'orange' }}
-	>
-		large orange box
-	</div>
-)
-const sizelessColorlessBox = (
-	<div className="box" style={{ fontStyle: 'italic' }}>
-		sizeless colorless box
-	</div>
-)
+export const Box = ({ style = {}, className = '', ...otherProps }) => {
+	return (
+		<div
+			className={`box ${className}`}
+			style={{ fontStyle: 'italic', ...style }}
+			{...otherProps}
+		/>
+	)
+}
 
 function App() {
 	return (
 		<div>
-			{smallBox}
-			{mediumBox}
-			{largeBox}
-			{sizelessColorlessBox}
+			<Box
+				className="box box--small"
+				style={{ fontStyle: 'italic', backgroundColor: 'lightblue' }}
+			>
+				small lightblue box
+			</Box>
+			<Box
+				className="box box--medium"
+				style={{ fontStyle: 'italic', backgroundColor: 'pink' }}
+			>
+				medium pink box
+			</Box>
+			<Box
+				className="box box--large"
+				style={{ fontStyle: 'italic', backgroundColor: 'orange' }}
+			>
+				large orange box
+			</Box>
+			<Box className="box" style={{ fontStyle: 'italic' }}>
+				sizeless colorless box
+			</Box>
 		</div>
 	)
 }
