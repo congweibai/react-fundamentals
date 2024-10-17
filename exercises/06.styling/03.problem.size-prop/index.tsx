@@ -8,9 +8,9 @@ export function Box({
 	// 🐨 add a size prop here
 	...otherProps // 🦺 intersect (&) this with an object that has a size prop type here which is
 	// optional and is one of "small", "medium", or "large"
-}: React.ComponentProps<'div'> & { size: 'small' | 'medium' | 'large' }) {
+}: React.ComponentProps<'div'> & { size?: 'small' | 'medium' | 'large' }) {
 	// 🐨 based on the size prop, define a new variable called sizeClassName
-	const sizeClassName = `box--${size}`
+	const sizeClassName = size ? `box--${size}` : ''
 	return (
 		<div
 			// 🐨 add the sizeClassName to the className prop
