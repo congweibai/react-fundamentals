@@ -13,6 +13,16 @@ function App() {
 				- parent
 				- student
 			 */}
+			<label>
+				Account Type:
+				<select name="accountType">
+					<option value="">--Please select an option--</option>
+					<option value="admin">Admin</option>
+					<option value="teacher">Teacher</option>
+					<option value="parent">Parent</option>
+					<option value="student">Student</option>
+				</select>
+			</label>
 			{/* 💯 make the first option be "--Please select an option--" with a value of an empty string */}
 			<div>
 				<label htmlFor="usernameInput">Username:</label>
