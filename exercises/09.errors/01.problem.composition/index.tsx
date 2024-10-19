@@ -1,8 +1,9 @@
 import { createRoot } from 'react-dom/client'
+import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
 // 🐨 bring in ErrorBoundary and FallbackProps type from react-error-boundary
 
 // 🐨 Rename this to OnboardingForm
-function App() {
+function OnboardingForm() {
 	return (
 		<form
 			action="api/onboarding"
@@ -96,6 +97,10 @@ function App() {
 	)
 }
 
+function ErrorFallback(props: FallbackProps) {
+	return props.error.message
+}
+
 // 🐨 create an ErrorFallback component here that accepts FallbackProps
 // and renders the error.message
 // 💯 you can make it look nice if you want
@@ -108,4 +113,8 @@ function App() {
 
 const rootEl = document.createElement('div')
 document.body.append(rootEl)
-createRoot(rootEl).render(<App />)
+createRoot(rootEl).render(
+	<ErrorBoundary FallbackComponent={ErrorFallback}>
+		<OnboardingForm />
+	</ErrorBoundary>,
+)
